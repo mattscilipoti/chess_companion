@@ -33,7 +33,7 @@ $(document).ready(function(){
 	  updateStatus();
 	};
 
-	// update the board position after the piece snap 
+	// update the board position after the piece snap
 	// for castling, en passant, pawn promotion
 	var onSnapEnd = function() {
 	  board.position(game.fen());
@@ -82,10 +82,14 @@ $(document).ready(function(){
 	  onSnapEnd: onSnapEnd
 	};
 	board = new ChessBoard('board', cfg);
-	
+
 	updateStatus();
 
+	// mms: The more I think about it, the more I'd like to see these event handlers call methods
+  // 	see how the functions above are used to configure the ChessBoard?  Encapsulation breeds concepts.  You do all sorts of stuff with a concept, once it is defined. Now, we just have blocks of code.
+
 	// Clicking a game loads it on the gameboard
+	// mms: interesting event notation.  Glad you were here to explain it.
 	$('.gamebar').on("click", '.game-link', function(event){
 		event.preventDefault();
 		document.querySelector('.round').innerHTML = "Round " + $(this).data('round') + ":";
@@ -151,13 +155,3 @@ $(document).ready(function(){
 
 
 })
-
-
-
-
-
-
-
-
-
-

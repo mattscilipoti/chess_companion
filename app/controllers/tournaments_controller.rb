@@ -3,6 +3,7 @@ class TournamentsController < ApplicationController
 
 	def index
 		@user = current_user
+		#mms: good security/auth.  Only allow this user to their stuff.
 		@tournaments = current_user.tournaments.all
 	end
 
@@ -20,6 +21,7 @@ class TournamentsController < ApplicationController
 		@tournament.save!
 
 		respond_to do |format|
+			# mms: redirect should use *_url named route helpers: `user_tournaments_url(current_user)`
 		  format.html {redirect_to user_tournaments_path(current_user)}
 		  format.json {render json: @tournament}
 		  format.js
@@ -41,7 +43,7 @@ class TournamentsController < ApplicationController
 		@tournament.destroy
 		respond_to do |format|
 		  format.html {redirect_to user_tournaments_path}
-		  format.js   
+		  format.js
 		end
 	end
 

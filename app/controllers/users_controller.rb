@@ -41,9 +41,7 @@ class UsersController < ApplicationController
 			:uscf_id,
 			:password,
 			:password_confirmation,
-			:admin
+			:admin  #mms: means any hacker can set admin flag.  Recommend only setting admin from authenticated route.
 		)
 	end
 end
-
-

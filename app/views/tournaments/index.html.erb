@@ -1,13 +1,14 @@
 <div class="container">
   <div class="sidebar">
     <ol class="tournaments">
+      <!-- mms: reusing a partial in rails and js?  nice. -->
   	<%= render @tournaments %>
     </ol>
 
     <p>Add a <%= link_to "new tournament?", "#", id: "tourn-link" %></p>
 
     <%= form_for [current_user, current_user.tournaments.new], html: {class: 'new-tourn'}, remote: true do |f| %>
-    	
+
     		<%= f.label :event %>
   		  <%= f.text_field :event, class: "tournament-field" %><br>
 
@@ -18,14 +19,14 @@
   		  <%= f.text_field :date, class: "tournament-field" %>
 
   		  <%= f.submit 'Save', id: 'submit' %>
-    	
+
     <% end %>
-    
+
   </div>
 
   <div class="gamebar">
     <ol></ol>
-    
+
   </div>
 
   <div class="game-board">
